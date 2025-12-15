@@ -180,7 +180,7 @@ Placeholder:
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+Apache 2.0 — see [LICENSE](LICENSE).
 
 ---
 
@@ -189,6 +189,6 @@ MIT — see [LICENSE](LICENSE).
 **Mojtaba Sadafi**
 [https://mojsadafi.ir](https://mojsadafi.ir)
 
-```
-```
+
+
 
