@@ -1,0 +1,5 @@
+System: IEEE14
+Nodes=14, Edges=20, Components=1
+Base PMUs: [0, 3, 5, 6, 8] (#5) | Coverage=100.0%
+N-1 robustness (base PMUs keep 100%): 65.0% | Avg ΔPMUs under outage: -0.050
+Worst outage (by coverage drop / ΔPMUs): line idx=9 | components=1 | coverage_fixed=92.9% | pmus_reopt=6 (Δ=1)
