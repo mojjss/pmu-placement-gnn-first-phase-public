@@ -167,13 +167,7 @@ results/
 * Run more IEEE systems (14/30/57/118) and report compact coverage/runtime tables.
 * Improve architectures and cross-system generalization.
 
----
 
-## Citation
-
-Placeholder:
-
-> Sadafi, M. (2025). *Learning-Augmented PMU Placement with Graph Neural Networks.*
 
 ---
 
