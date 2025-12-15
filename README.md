@@ -1,7 +1,6 @@
 
 # PMU Placement using Graph Neural Networks (GNNs) - First Phase
 
-[![CI](https://img.shields.io/github/actions/workflow/status/mojjss/pmu-placement-gnn-first-phase-public/ci.yml?label=GitHub%20Actions&logo=githubactions)](https://github.com/mojjss/pmu-placement-gnn-first-phase-public/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.11.4-blue?logo=python&logoColor=white)](#installation)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter&logoColor=white)](#repository-entry-points)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
