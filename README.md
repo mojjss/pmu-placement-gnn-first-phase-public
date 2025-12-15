@@ -1,317 +1,191 @@
-
+````md
 # Learning-Augmented PMU Placement with Graph Neural Networks
 
-This project investigates the use of **Graph Neural Networks (GNNs)** to optimize
-**Phasor Measurement Unit (PMU)** placement in electrical power networks.
+[![CI - C](https://img.shields.io/badge/CI-C-blue)](https://github.com/mojjss/pmu-placement-gnn-first-phase-public/actions)
+[![CI - MATLAB](https://img.shields.io/badge/CI-MATLAB-orange)](https://github.com/mojjss/pmu-placement-gnn-first-phase-public/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-The core idea is:
+This project explores **learning-augmented PMU placement** in power networks using **Graph Neural Networks (GNNs)**.
 
-- Use **classical algorithms** (currently a greedy observability heuristic,
-  with MILP / GA baselines planned) to generate “expert” PMU placements.
-- Simulate **healthy and faulted topologies** (line / transformer outages) on
-  IEEE test systems using **pandapower**.
-- Build a **GNN-ready dataset** from these scenarios.
-- Train a **supervised GNN** to predict where PMUs should be placed.
+Core workflow:
+- Generate “expert” labels with a **classical baseline** (currently greedy observability; **MILP/GA planned**).
+- Simulate **intact + faulted** topologies (line/transformer outages) with **pandapower**.
+- Export a **PyTorch Geometric (PyG)** dataset.
+- Train a **supervised GNN** to predict PMU locations and evaluate **top-K** observability.
 
-The long–term goal is to reduce sensor count and computational cost while
-maintaining full or near-full observability and good robustness under faults.
-
-This codebase supports the research line for:
-
-> *“Learning-Augmented PMU Placement with Graph Neural Networks.”*
-
+**Goal:** keep **full or near-full observability** while reducing optimization/runtime cost and improving robustness under faults.
 
 ---
 
-## 🧠 Current Capabilities
+## What’s implemented
 
-Right now, the repo contains:
+### 1) Greedy baseline + robustness
+- Greedy PMU placement (observability-based).
+- Outage evaluation:
+  - `fault_mode="n-1"`: single line/trafo outages (fixed coverage + re-opt via greedy).
+  - `fault_mode="random"`: optional random multi-fault scenarios.
+- Outputs: CSV metrics, figures, and a **manifest JSON** per run.
 
-- **Greedy PMU placement baseline**
-  - Observability-based greedy algorithm on the bus/line graph.
-  - Implemented in `greedy.ipynb`.
-- **Random fault & robustness analysis**
-  - Random line/transformer outages using pandapower.
-  - Rebuilds the graph, recomputes coverage, and re-optimizes PMUs.
-  - Saves metrics, figures, and a manifest JSON per run.
-- **GNN dataset builder**
-  - Converts each (network, placement) pair into:
-    - Node features `x`
-    - Edge index `edge_index`
-    - Edge features `edge_attr`
-    - Node labels `y` (PMU = 1, no PMU = 0)
-    - Graph-level labels (coverage, Δ#PMUs, components, etc.)
-  - Stores everything as `.npz` samples plus an `index.csv` for PyG.
-- **GCN-based model & training loop (PyTorch Geometric)**
-  - Loads the `.npz` samples into a `PMUGNNDataset`.
-  - Trains a small GCN as a **node-classification** model:
-    “place a PMU here or not”.
+### 2) GNN dataset export (NPZ + index.csv)
+- Builds a dataset from intact + faulted scenarios (labels from greedy / greedy re-opt).
+- Outputs: `samples/*.npz`, `index.csv`, and `dataset_summary.csv`.
 
-**Planned (not yet implemented in code):**
-
-- MILP / ILP baseline for PMU placement (via PuLP or similar).
-- Genetic Algorithm (GA) baseline (via DEAP).
-- Cleaner separation into `src/` modules and multiple benchmark systems
-  (IEEE-14/30/57/118).
-
+### 3) GNN training + top-K evaluation (PyG)
+- Node-classification **GCN** for PMU / no-PMU prediction.
+- **Top-K inference** with `K = #PMUs(greedy)` (fair comparison) and coverage evaluation.
+- Saves curves + checkpoints under `results/`.
 
 ---
 
-## 📁 Project Structure (current)
+## Repository entry points
 
-A typical local layout looks like:
+- `Greedy-1.5.*` — baseline, outages, plots, manifest, dataset export  
+- `GNN-1.5.*` — dataset loading, training, evaluation, greedy vs GNN top-K
+
+> Notebook-style “cells” (`# %%`). If saved as `.txt`, rename to `.py` for easier execution.
+
+---
+
+## Project layout (typical)
 
 ```text
 pmu-placement-gnn/
-├── greedy.ipynb          # Greedy baseline + robustness + GNN dataset builder
-├── GNN-1.0.ipynb         # PyTorch Geometric dataset + GCN training
+├── Greedy-1.5.*
+├── GNN-1.5.*
 ├── results/
-│   ├── figures/          # PNG/SVG plots of placements and outages
-│   ├── metrics/          # CSVs + summary + manifests
-│   │   ├── baseline/
-│   │   ├── robustness/
-│   │   ├── summary/
-│   │   └── manifest/
-│   └── gnn_dataset/      # generated .npz samples + index.csv (per run/system)
+│   ├── figures/
+│   ├── metrics/          # baseline/robustness/summary + manifest
+│   ├── gnn_dataset/      # NPZ + index.csv
+│   ├── figures_gnn/
+│   └── gnn_models/
 ├── requirements.txt
 └── README.md
 ````
 
-Some folders (like `results/…` and `results/gnn_dataset/…`) are created
-automatically when you run the notebooks.
-
 ---
 
-## ⚙️ Installation (CPU-only)
+## Installation
 
 ```bash
-# Create and activate a virtual environment
 python -m venv .venv
-
 # Windows PowerShell:
 .venv\Scripts\Activate.ps1
-# (Linux / macOS: source .venv/bin/activate)
+# Linux/macOS:
+# source .venv/bin/activate
 
-# Upgrade pip
-pip install --upgrade pip
+python -m pip install --upgrade pip
 
-# Install CPU-only PyTorch first (from the official index)
+# PyTorch (CPU example)
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
-
-# Install PyTorch Geometric (CPU build)
 pip install torch-geometric
 
-# Install the rest of the dependencies
 pip install -r requirements.txt
 ```
 
-> If versions in `requirements.txt` conflict with your local PyTorch install,
-> prefer the versions suggested by the official PyTorch / PyG docs and then
-> adjust `requirements.txt` accordingly.
-
 ---
 
-## 🚀 How to Run the Baseline + Build the GNN Dataset
+## Quickstart (end-to-end)
 
-### 1️⃣ Run greedy baseline + robustness (in `greedy.ipynb`)
-
-1. Open **`greedy.ipynb`**.
-
-2. In **Cell 2**, choose a test system, e.g.:
-
-   ```python
-   import pandapower.networks as pn
-
-   net118 = pn.case118()
-   run_id_118, manifest_118 = run_suite(
-       net118,
-       system_name="IEEE118",
-       top_k=5,
-       preview=True,
-       run_tag="greedy_randomfault_118",
-   )
-   print("IEEE118 Run ID:", run_id_118)
-   ```
-
-3. This will:
-
-   * Build the graph from the pandapower network.
-   * Compute a **baseline greedy PMU placement**.
-   * Simulate random **line/transformer faults** and re-optimize PMUs.
-   * Save:
-
-     * CSV metrics in `results/metrics/...`
-     * PNG/SVG figures in `results/figures/...`
-     * A manifest JSON (paths + summary) under
-       `results/metrics/.../manifest/manifest_<system>.json`.
-
-### 2️⃣ Build a PyG-ready GNN dataset (still in `greedy.ipynb`)
-
-After `run_suite(...)` finishes, run **Cell 4**:
+### A) Run greedy baseline + robustness (in `Greedy-1.5.*`)
 
 ```python
-net_for_gnn_118 = net118
-out_root_118, index_path_118 = build_gnn_dataset_from_manifest(
-    net_for_gnn_118,
-    manifest_118,
-    max_fault_samples=None  # or e.g. 200 to subsample faults
+import pandapower.networks as pn
+net = pn.case14()
+
+run_id, manifest = run_suite(
+    net,
+    system_name="IEEE14",
+    fault_mode="n-1",   # or "random"
+    top_k=5,
+    preview=True,
+    run_tag="greedy_n1_14",
 )
-print("GNN dataset for IEEE118 stored at:", out_root_118)
-print("Index file:", index_path_118)
+print("Run ID:", run_id)
 ```
 
-This creates a structure like:
+### B) Export a PyG dataset (still in `Greedy-1.5.*`)
+
+```python
+out_root, index_path, summary_path = build_gnn_dataset_from_manifest(
+    net,
+    manifest,
+    max_fault_samples=None,
+    extra_random_faults_for_gnn=0,
+    max_faults_random=3,
+)
+print(out_root, index_path, summary_path)
+```
 
 ```text
-results/gnn_dataset/<run_id_118>/IEEE118/
-├── samples/
-│   ├── intact.npz
-│   ├── line_10_42.npz
-│   ├── trafo_3_17.npz
-│   └── ...
-└── index.csv
+results/gnn_dataset/<run_id>/<system>/
+├── samples/*.npz
+├── index.csv
+└── dataset_summary.csv
 ```
 
-Each `.npz` sample contains:
+### C) Train + evaluate the GNN (in `GNN-1.5.*`)
 
-* `x`          – node features
-* `edge_index` – edge connectivity (2 × E)
-* `edge_attr`  – edge features
-* `y`          – node labels (1 = PMU, 0 = no PMU)
-* `bus_ids`    – original bus indices
-* `graph_y`    – graph-level targets (e.g., coverage, ΔPMUs, components)
-* `scenario_type` – `"intact"` or `"faulted"`
+* Set dataset paths (e.g., `N1_DATASET_DIRS` / `RANDOM_DATASET_DIRS`)
+* Run training to save:
 
----
-
-## 📦 What’s in Each GNN Sample?
-
-For a graph with **N** buses and **E** branches:
-
-* **Node features** `x ∈ ℝ^{N×5}`
-
-  1. `voltage_level` – nominal bus voltage (kv)
-  2. `degree` – graph degree of the bus
-  3. `has_load` – 1 if bus has a load, else 0
-  4. `has_gen` – 1 if bus has a generator, else 0
-  5. `has_ext` – 1 if bus is connected to an external grid
-
-* **Edge index** `edge_index ∈ {0..N-1}^{2×E}`
-
-  * Standard PyG convention: `edge_index[0, e] = u`, `edge_index[1, e] = v`.
-
-* **Edge features** `edge_attr ∈ ℝ^{E×6}`
-
-  1. `length_km`
-  2. `r_ohm_per_km`
-  3. `sn_mva`
-  4. `impedance` (vk%)
-  5. `is_line`  (1 if line, else 0)
-  6. `is_trafo` (1 if transformer, else 0)
-
-* **Node labels** `y ∈ {0,1}^N`
-
-  * `y[i] = 1` if bus *i* has a PMU in the reference solution
-    (greedy baseline for intact network, greedy re-optimization for faulted ones).
-
-* **Graph-level labels** `graph_y`
-
-  * For the intact system: `[coverage%, #PMUs]`.
-  * For each faulted case: `[coverage_fixed%, coverage_reopt%, ΔPMUs, #components]`.
-
-These are exactly what **GNN-1.0.ipynb** expects.
+  * curves (`results/figures_gnn/`)
+  * checkpoints (`results/gnn_models/`)
+  * greedy vs GNN top-K coverage comparisons
 
 ---
 
-## 🧠 Train the GNN (in `GNN-1.0.ipynb`)
+## Dataset format (concise)
 
-1. Open **`GNN-1.0.ipynb`**.
+Each `samples/*.npz` includes:
 
-2. Point it to the dataset you just built by setting:
+* `x` (`N×5`), `edge_index` (`2×E`), `edge_attr` (`E×6`)
+* `y` (`N`, 1=PMU / 0=no-PMU)
+* `bus_ids`, `graph_y`, `scenario_type` (`"intact"` / `"faulted"`)
 
-   ```python
-   GNN_ROOT = r"D:\my_projects\pmu-placement-gnn\results\gnn_dataset"
-   GNN_SYSTEM_DIR = r"<run_id_118>\IEEE118"  # replace with your actual run_id
-   DATASET_DIR = os.path.join(GNN_ROOT, GNN_SYSTEM_DIR)
-
-   index_csv = os.path.join(DATASET_DIR, "index.csv")
-   ```
-
-3. Run **Cell B/C** to instantiate the `PMUGNNDataset` and create
-   train/validation splits.
-
-4. Run **Cells D/E** to:
-
-   * Define `PMUGCN` (a two-layer GCN + classifier).
-   * Train for a selected number of epochs.
-   * Print **node-level training and validation accuracy** each epoch.
-
-You can then experiment with:
-
-* Different hidden sizes, number of layers, and learning rates.
-* Training only on intact graphs and evaluating on faulted ones.
-* Training on one IEEE system and testing on another.
+`index.csv` stores per-sample metadata and file pointers.
 
 ---
 
-## 🧩 Algorithms
+## Outputs
 
-**Currently implemented**
-
-* **Greedy PMU Placement** (observability-based).
-* **Random N-1 style outages** (lines/transformers) + greedy re-optimization.
-* **GCN (PyTorch Geometric)** for node-wise PMU placement prediction.
-
-**Planned baselines**
-
-* **MILP/ILP formulation** for optimal PMU placement.
-* **Genetic Algorithm (GA)** for heuristic optimization.
-
-These baselines will later be used both:
-
-* As **targets** for GNN training (learning from “expert” placements).
-* As **comparators** in the final paper (PMU count, coverage, runtime).
+```text
+results/
+├─ metrics/       # baseline / robustness / summary / manifest
+├─ figures/       # baseline + outage plots
+├─ gnn_dataset/   # NPZ + index
+├─ figures_gnn/   # training curves + comparison visuals
+└─ gnn_models/    # .pth checkpoints
+```
 
 ---
 
-## 📊 Outputs
+## Roadmap
 
-Key outputs appear under `results/`:
-
-* `results/metrics/baseline/…`
-
-  * Nodes, edges, components, base PMU set, coverage, runtimes.
-* `results/metrics/robustness/…`
-
-  * One row per outage: kind, idx, components, coverage, re-optimized PMUs, ΔPMUs.
-* `results/metrics/summary/…`
-
-  * High-level summary per system (robustness %, avg ΔPMUs, runtimes).
-* `results/metrics/manifest/manifest_<system>.json`
-
-  * Machine-readable registry of all files for that run.
-* `results/figures/…`
-
-  * Base placement plot, “before/after” critical outage plots, top-K outage bar chart.
-* `results/gnn_dataset/<run_id>/<system>/…`
-
-  * The actual **GNN training dataset** (NPZ + index.csv).
-
-
+* Add ILP/MILP and GA baselines.
+* Run more IEEE systems (14/30/57/118) and report compact coverage/runtime tables.
+* Improve architectures and cross-system generalization.
 
 ---
 
-## 📚 Citation
+## Citation
 
-If you use this work in your research, please cite (placeholder):
+Placeholder:
 
 > Sadafi, M. (2025). *Learning-Augmented PMU Placement with Graph Neural Networks.*
 
 ---
 
-## 👨‍💻 Author
+## License
+
+MIT — see [LICENSE](LICENSE).
+
+---
+
+## Author
 
 **Mojtaba Sadafi**
-🌐 [https://mojsadafi.ir](https://mojsadafi.ir)
+[https://mojsadafi.ir](https://mojsadafi.ir)
 
 ```
+```
+
