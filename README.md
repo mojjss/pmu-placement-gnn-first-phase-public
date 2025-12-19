@@ -158,19 +158,6 @@ results/
 ├─ figures_gnn/   # training curves + comparison visuals
 └─ gnn_models/    # .pth checkpoints
 ```
-
----
-
-## Roadmap
-
-* Add ILP/MILP and GA baselines.
-* Run more IEEE systems (14/30/57/118) and report compact coverage/runtime tables.
-* Improve architectures and cross-system generalization.
-
-
-
----
-
 ## License
 
 Apache 2.0 — see [LICENSE](LICENSE).
