@@ -1,0 +1,151 @@
+{
+  "run_id": "RUN_20260207_132738_greedy_random_57",
+  "system": "IEEE57",
+  "created": "Sat Feb  7 13:29:22 2026",
+  "paths": {
+    "fig_base": "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260207_132738_greedy_random_57\\IEEE57\\base",
+    "fig_worst": "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260207_132738_greedy_random_57\\IEEE57\\worst",
+    "fig_topk": "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260207_132738_greedy_random_57\\IEEE57\\topk",
+    "met_base": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260207_132738_greedy_random_57\\IEEE57\\baseline",
+    "met_rob": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260207_132738_greedy_random_57\\IEEE57\\robustness",
+    "met_summary": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260207_132738_greedy_random_57\\IEEE57\\summary",
+    "met_manifest": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260207_132738_greedy_random_57\\IEEE57\\manifest",
+    "fig_root": "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260207_132738_greedy_random_57\\IEEE57",
+    "metric_root": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260207_132738_greedy_random_57\\IEEE57"
+  },
+  "artifacts": {
+    "baseline_csv": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260207_132738_greedy_random_57\\IEEE57\\baseline\\baseline_IEEE57.csv",
+    "robustness_csv": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260207_132738_greedy_random_57\\IEEE57\\robustness\\robustness_IEEE57.csv",
+    "summary_csv": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260207_132738_greedy_random_57\\IEEE57\\summary\\summary_IEEE57.csv",
+    "summary_txt": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260207_132738_greedy_random_57\\IEEE57\\summary\\summary_IEEE57.txt",
+    "critical_lines_csv": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260207_132738_greedy_random_57\\IEEE57\\summary\\critical_lines_IEEE57.csv",
+    "base_png": "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260207_132738_greedy_random_57\\IEEE57\\base\\20260207_132738_base_IEEE57.png",
+    "worst_pngs": [
+      [
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260207_132738_greedy_random_57\\IEEE57\\worst\\20260207_132846_worst1_before_IEEE57_line_48.png",
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260207_132738_greedy_random_57\\IEEE57\\worst\\20260207_132849_worst1_after_IEEE57_line_48.png"
+      ],
+      [
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260207_132738_greedy_random_57\\IEEE57\\worst\\20260207_132853_worst2_before_IEEE57_trafo_16.png",
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260207_132738_greedy_random_57\\IEEE57\\worst\\20260207_132856_worst2_after_IEEE57_trafo_16.png"
+      ],
+      [
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260207_132738_greedy_random_57\\IEEE57\\worst\\20260207_132859_worst3_before_IEEE57_line_27.png",
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260207_132738_greedy_random_57\\IEEE57\\worst\\20260207_132903_worst3_after_IEEE57_line_27.png"
+      ],
+      [
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260207_132738_greedy_random_57\\IEEE57\\worst\\20260207_132906_worst4_before_IEEE57_line_7.png",
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260207_132738_greedy_random_57\\IEEE57\\worst\\20260207_132909_worst4_after_IEEE57_line_7.png"
+      ],
+      [
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260207_132738_greedy_random_57\\IEEE57\\worst\\20260207_132912_worst5_before_IEEE57_line_8.png",
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260207_132738_greedy_random_57\\IEEE57\\worst\\20260207_132916_worst5_after_IEEE57_line_8.png"
+      ]
+    ],
+    "topk_png": "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260207_132738_greedy_random_57\\IEEE57\\topk\\20260207_132919_topk_outages_IEEE57.png"
+  },
+  "metrics": {
+    "nodes": 57,
+    "edges": 78,
+    "base_num_pmus": 18,
+    "base_coverage_%": 100.0,
+    "robustness_%": 12.2,
+    "avg_delta_pmus": 0.775,
+    "base_graph_time_s": 0.006687399989459664,
+    "base_greedy_time_s": 0.0015861000283621252,
+    "sweep_total_time_s": 63.9613,
+    "fault_mode": "random"
+  },
+  "topK": [
+    {
+      "kind": "line",
+      "idx": 48,
+      "nodes": 57,
+      "edges": 71,
+      "components": 2,
+      "coverage_fixed_%": 91.2280701754386,
+      "pmus_fixed": 18,
+      "coverage_reopt_%": 100.0,
+      "pmus_reopt": 21,
+      "delta_pmus": 3,
+      "greedy_time_s": 0.0008465999853797257,
+      "pmus_reopt_list": "[0, 3, 5, 12, 14, 19, 20, 23, 24, 25, 28, 31, 33, 36, 37, 40, 45, 46, 50, 53, 55]",
+      "failed_u": 45,
+      "failed_v": 46,
+      "keeps_100%": false,
+      "score": 43.7719298245614
+    },
+    {
+      "kind": "trafo",
+      "idx": 16,
+      "nodes": 57,
+      "edges": 74,
+      "components": 3,
+      "coverage_fixed_%": 96.49122807017544,
+      "pmus_fixed": 18,
+      "coverage_reopt_%": 100.0,
+      "pmus_reopt": 21,
+      "delta_pmus": 3,
+      "greedy_time_s": 0.0008291000267490745,
+      "pmus_reopt_list": "[0, 3, 5, 10, 12, 14, 19, 23, 24, 25, 28, 31, 34, 36, 37, 45, 50, 51, 53, 54, 55]",
+      "failed_u": 54,
+      "failed_v": 8,
+      "keeps_100%": false,
+      "score": 43.50877192982456
+    },
+    {
+      "kind": "line",
+      "idx": 27,
+      "nodes": 57,
+      "edges": 75,
+      "components": 2,
+      "coverage_fixed_%": 96.49122807017544,
+      "pmus_fixed": 18,
+      "coverage_reopt_%": 100.0,
+      "pmus_reopt": 21,
+      "delta_pmus": 3,
+      "greedy_time_s": 0.0007903000223450363,
+      "pmus_reopt_list": "[0, 3, 8, 10, 12, 14, 17, 19, 20, 23, 24, 25, 28, 31, 34, 36, 37, 45, 49, 52, 55]",
+      "failed_u": 18,
+      "failed_v": 19,
+      "keeps_100%": false,
+      "score": 38.50877192982456
+    },
+    {
+      "kind": "line",
+      "idx": 7,
+      "nodes": 57,
+      "edges": 74,
+      "components": 2,
+      "coverage_fixed_%": 96.49122807017544,
+      "pmus_fixed": 18,
+      "coverage_reopt_%": 100.0,
+      "pmus_reopt": 21,
+      "delta_pmus": 3,
+      "greedy_time_s": 0.0011322000063955784,
+      "pmus_reopt_list": "[0, 3, 5, 8, 10, 12, 14, 19, 23, 24, 25, 28, 31, 34, 36, 37, 45, 50, 51, 53, 55]",
+      "failed_u": 7,
+      "failed_v": 8,
+      "keeps_100%": false,
+      "score": 38.50877192982456
+    },
+    {
+      "kind": "line",
+      "idx": 8,
+      "nodes": 57,
+      "edges": 73,
+      "components": 1,
+      "coverage_fixed_%": 92.98245614035088,
+      "pmus_fixed": 18,
+      "coverage_reopt_%": 100.0,
+      "pmus_reopt": 21,
+      "delta_pmus": 3,
+      "greedy_time_s": 0.0008957000100053847,
+      "pmus_reopt_list": "[0, 3, 5, 9, 10, 12, 17, 19, 23, 25, 28, 29, 31, 34, 36, 37, 43, 45, 49, 53, 55]",
+      "failed_u": 8,
+      "failed_v": 9,
+      "keeps_100%": false,
+      "score": 37.01754385964912
+    }
+  ]
+}

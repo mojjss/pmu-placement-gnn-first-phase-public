@@ -1,0 +1,2 @@
+system,gnn_run_id,dataset_used,num_graphs,num_buses,avg_K,greedy_pmu_placement_ms_per_graph,gnn_forward_topk_ms_per_graph,num_intact_in_eval,num_faulted_in_eval
+IEEE118,GNN_20260105_024318,val_dataset,38,118,36.21052631578947,4.878431580819827,3.4810894744862853,0,38

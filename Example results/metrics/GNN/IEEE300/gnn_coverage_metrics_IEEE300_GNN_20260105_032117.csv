@@ -1,0 +1,2 @@
+system,dataset_used,num_graphs,avg_K,avg_greedy_coverage_%,avg_gnn_coverage_%,greedy_robustness_%,gnn_robustness_%,num_intact_graphs_in_eval,num_faulted_graphs_in_eval
+IEEE300,val_dataset,83,96.13253012048193,100.0,99.98795180722891,100.0,96.3855421686747,0,83

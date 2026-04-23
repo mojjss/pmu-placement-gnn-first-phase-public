@@ -1,0 +1,26 @@
+Run ID: RUN_20260105_011025_greedy_random_118 | System: IEEE118
+- Nodes=118, Edges=179, Components=1
+- Base PMUs: [0, 4, 8, 10, 11, 16, 19, 22, 24, 26, 27, 31, 33, 36, 39, 44, 48, 49, 50, 51, 58, 60, 61, 67, 70, 74, 76, 79, 84, 85, 88, 91, 93, 99, 104, 109] (#36) | Coverage=100.0%
+- N-1 robustness (base PMUs keep 100%): 5.5%
+- Avg ΔPMUs under outage: 0.569
+- Runtimes: build_graph=0.013851800002157688s | greedy_base=0.002999799995450303s | sweep_total=237.7992s
+
+CSV files:
+  • RUN_20260105_011025_greedy_random_118\IEEE118\baseline\baseline_IEEE118.csv — baseline metrics
+  • RUN_20260105_011025_greedy_random_118\IEEE118\robustness\robustness_IEEE118.csv — robustness / outages
+  • RUN_20260105_011025_greedy_random_118\IEEE118\summary\summary_IEEE118.csv — summary stats
+  • RUN_20260105_011025_greedy_random_118\IEEE118\summary\critical_lines_IEEE118.csv — critical lines (aggregated)
+
+Figures:
+  • RUN_20260105_011025_greedy_random_118\IEEE118\base\20260105_011025_base_IEEE118.png — Base placement
+  • RUN_20260105_011025_greedy_random_118\IEEE118\topk\20260105_011507_topk_outages_IEEE118.png — Top-K outage bar chart
+  • RUN_20260105_011025_greedy_random_118\IEEE118\worst\20260105_011426_worst1_before_IEEE118_line_103.png — BEFORE: base PMUs, failed branch marked, unobserved gray
+  • RUN_20260105_011025_greedy_random_118\IEEE118\worst\20260105_011430_worst1_after_IEEE118_line_103.png — AFTER: re-optimized PMUs
+  • RUN_20260105_011025_greedy_random_118\IEEE118\worst\20260105_011434_worst2_before_IEEE118_line_7.png — BEFORE: base PMUs, failed branch marked, unobserved gray
+  • RUN_20260105_011025_greedy_random_118\IEEE118\worst\20260105_011437_worst2_after_IEEE118_line_7.png — AFTER: re-optimized PMUs
+  • RUN_20260105_011025_greedy_random_118\IEEE118\worst\20260105_011441_worst3_before_IEEE118_line_37.png — BEFORE: base PMUs, failed branch marked, unobserved gray
+  • RUN_20260105_011025_greedy_random_118\IEEE118\worst\20260105_011445_worst3_after_IEEE118_line_37.png — AFTER: re-optimized PMUs
+  • RUN_20260105_011025_greedy_random_118\IEEE118\worst\20260105_011448_worst4_before_IEEE118_line_163.png — BEFORE: base PMUs, failed branch marked, unobserved gray
+  • RUN_20260105_011025_greedy_random_118\IEEE118\worst\20260105_011452_worst4_after_IEEE118_line_163.png — AFTER: re-optimized PMUs
+  • RUN_20260105_011025_greedy_random_118\IEEE118\worst\20260105_011456_worst5_before_IEEE118_line_164.png — BEFORE: base PMUs, failed branch marked, unobserved gray
+  • RUN_20260105_011025_greedy_random_118\IEEE118\worst\20260105_011501_worst5_after_IEEE118_line_164.png — AFTER: re-optimized PMUs

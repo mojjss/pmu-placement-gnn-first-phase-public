@@ -1,0 +1,151 @@
+{
+  "run_id": "RUN_20260104_233749_greedy_random_300",
+  "system": "IEEE300",
+  "created": "Mon Jan  5 00:01:22 2026",
+  "paths": {
+    "fig_base": "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260104_233749_greedy_random_300\\IEEE300\\base",
+    "fig_worst": "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260104_233749_greedy_random_300\\IEEE300\\worst",
+    "fig_topk": "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260104_233749_greedy_random_300\\IEEE300\\topk",
+    "met_base": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260104_233749_greedy_random_300\\IEEE300\\baseline",
+    "met_rob": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260104_233749_greedy_random_300\\IEEE300\\robustness",
+    "met_summary": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260104_233749_greedy_random_300\\IEEE300\\summary",
+    "met_manifest": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260104_233749_greedy_random_300\\IEEE300\\manifest",
+    "fig_root": "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260104_233749_greedy_random_300\\IEEE300",
+    "metric_root": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260104_233749_greedy_random_300\\IEEE300"
+  },
+  "artifacts": {
+    "baseline_csv": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260104_233749_greedy_random_300\\IEEE300\\baseline\\baseline_IEEE300.csv",
+    "robustness_csv": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260104_233749_greedy_random_300\\IEEE300\\robustness\\robustness_IEEE300.csv",
+    "summary_csv": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260104_233749_greedy_random_300\\IEEE300\\summary\\summary_IEEE300.csv",
+    "summary_txt": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260104_233749_greedy_random_300\\IEEE300\\summary\\summary_IEEE300.txt",
+    "critical_lines_csv": "D:\\my_projects\\pmu-placement-gnn\\results\\metrics\\RUN_20260104_233749_greedy_random_300\\IEEE300\\summary\\critical_lines_IEEE300.csv",
+    "base_png": "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260104_233749_greedy_random_300\\IEEE300\\base\\20260104_233750_base_IEEE300.png",
+    "worst_pngs": [
+      [
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260104_233749_greedy_random_300\\IEEE300\\worst\\20260105_000004_worst1_before_IEEE300_line_213.png",
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260104_233749_greedy_random_300\\IEEE300\\worst\\20260105_000013_worst1_after_IEEE300_line_213.png"
+      ],
+      [
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260104_233749_greedy_random_300\\IEEE300\\worst\\20260105_000021_worst2_before_IEEE300_line_211.png",
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260104_233749_greedy_random_300\\IEEE300\\worst\\20260105_000030_worst2_after_IEEE300_line_211.png"
+      ],
+      [
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260104_233749_greedy_random_300\\IEEE300\\worst\\20260105_000037_worst3_before_IEEE300_line_212.png",
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260104_233749_greedy_random_300\\IEEE300\\worst\\20260105_000044_worst3_after_IEEE300_line_212.png"
+      ],
+      [
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260104_233749_greedy_random_300\\IEEE300\\worst\\20260105_000051_worst4_before_IEEE300_line_247.png",
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260104_233749_greedy_random_300\\IEEE300\\worst\\20260105_000058_worst4_after_IEEE300_line_247.png"
+      ],
+      [
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260104_233749_greedy_random_300\\IEEE300\\worst\\20260105_000105_worst5_before_IEEE300_line_239.png",
+        "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260104_233749_greedy_random_300\\IEEE300\\worst\\20260105_000113_worst5_after_IEEE300_line_239.png"
+      ]
+    ],
+    "topk_png": "D:\\my_projects\\pmu-placement-gnn\\results\\figures\\RUN_20260104_233749_greedy_random_300\\IEEE300\\topk\\20260105_000119_topk_outages_IEEE300.png"
+  },
+  "metrics": {
+    "nodes": 300,
+    "edges": 409,
+    "base_num_pmus": 96,
+    "base_coverage_%": 100.0,
+    "robustness_%": 8.929,
+    "avg_delta_pmus": 0.595,
+    "base_graph_time_s": 0.03186349998577498,
+    "base_greedy_time_s": 0.02344049999373965,
+    "sweep_total_time_s": 1326.3486,
+    "fault_mode": "random"
+  },
+  "topK": [
+    {
+      "kind": "line",
+      "idx": 213,
+      "nodes": 300,
+      "edges": 404,
+      "components": 3,
+      "coverage_fixed_%": 99.0,
+      "pmus_fixed": 96,
+      "coverage_reopt_%": 100.0,
+      "pmus_reopt": 101,
+      "delta_pmus": 5,
+      "greedy_time_s": 0.024581000005127862,
+      "pmus_reopt_list": "[0, 1, 2, 6, 10, 11, 14, 16, 18, 21, 22, 24, 28, 30, 32, 33, 35, 36, 37, 40, 42, 47, 48, 52, 53, 54, 56, 57, 58, 59, 61, 63, 64, 67, 70, 76, 78, 80, 82, 87, 92, 93, 95, 96, 97, 98, 102, 104, 108, 110, 111, 112, 115, 117, 118, 120, 121, 131, 132, 133, 143, 144, 150, 153, 156, 159, 162, 168, 171, 172, 173, 176, 178, 182, 186, 192, 195, 198, 199, 203, 207, 209, 210, 212, 215, 216, 218, 221, 223, 227, 232, 266, 267, 268, 269, 271, 272, 273, 275, 293, 296]",
+      "failed_u": 151,
+      "failed_v": 154,
+      "keeps_100%": false,
+      "score": 61.0
+    },
+    {
+      "kind": "line",
+      "idx": 211,
+      "nodes": 300,
+      "edges": 404,
+      "components": 3,
+      "coverage_fixed_%": 99.0,
+      "pmus_fixed": 96,
+      "coverage_reopt_%": 100.0,
+      "pmus_reopt": 101,
+      "delta_pmus": 5,
+      "greedy_time_s": 0.05025999998906627,
+      "pmus_reopt_list": "[0, 1, 2, 6, 10, 11, 14, 16, 18, 21, 22, 24, 28, 30, 32, 33, 35, 36, 37, 40, 42, 47, 48, 52, 53, 54, 56, 57, 58, 59, 61, 63, 64, 67, 70, 76, 78, 80, 82, 87, 92, 93, 95, 96, 97, 98, 102, 104, 108, 110, 111, 112, 115, 117, 118, 120, 121, 131, 132, 133, 143, 144, 150, 151, 156, 159, 162, 168, 171, 172, 173, 176, 178, 182, 186, 192, 195, 198, 199, 203, 207, 209, 210, 212, 215, 216, 218, 221, 223, 227, 232, 266, 267, 268, 269, 271, 272, 273, 275, 293, 296]",
+      "failed_u": 151,
+      "failed_v": 152,
+      "keeps_100%": false,
+      "score": 61.0
+    },
+    {
+      "kind": "line",
+      "idx": 212,
+      "nodes": 300,
+      "edges": 404,
+      "components": 3,
+      "coverage_fixed_%": 99.0,
+      "pmus_fixed": 96,
+      "coverage_reopt_%": 100.0,
+      "pmus_reopt": 101,
+      "delta_pmus": 5,
+      "greedy_time_s": 0.03637069999240339,
+      "pmus_reopt_list": "[0, 1, 2, 6, 10, 11, 14, 16, 18, 21, 22, 24, 28, 30, 32, 33, 35, 36, 37, 40, 42, 47, 48, 52, 53, 54, 56, 57, 58, 59, 61, 63, 64, 67, 70, 76, 78, 80, 82, 87, 92, 93, 95, 96, 97, 98, 102, 104, 108, 110, 111, 112, 115, 117, 118, 120, 121, 131, 132, 133, 143, 144, 150, 151, 156, 159, 162, 168, 171, 172, 173, 176, 178, 182, 186, 192, 195, 198, 199, 203, 207, 209, 210, 212, 215, 216, 218, 221, 223, 227, 232, 266, 267, 268, 269, 271, 272, 273, 275, 293, 296]",
+      "failed_u": 151,
+      "failed_v": 153,
+      "keeps_100%": false,
+      "score": 61.0
+    },
+    {
+      "kind": "line",
+      "idx": 247,
+      "nodes": 300,
+      "edges": 402,
+      "components": 4,
+      "coverage_fixed_%": 98.66666666666667,
+      "pmus_fixed": 96,
+      "coverage_reopt_%": 100.0,
+      "pmus_reopt": 100,
+      "delta_pmus": 4,
+      "greedy_time_s": 0.02588200001628138,
+      "pmus_reopt_list": "[0, 1, 2, 6, 10, 11, 14, 16, 18, 21, 22, 24, 28, 30, 32, 33, 35, 36, 37, 40, 42, 47, 48, 52, 53, 54, 56, 57, 58, 59, 61, 63, 64, 67, 70, 76, 78, 80, 82, 84, 87, 92, 93, 95, 96, 97, 102, 104, 105, 108, 110, 112, 115, 117, 118, 121, 131, 132, 133, 143, 144, 149, 151, 156, 159, 162, 168, 171, 172, 173, 176, 178, 182, 186, 192, 195, 198, 199, 203, 207, 209, 210, 212, 215, 216, 218, 221, 223, 227, 243, 263, 266, 267, 268, 269, 271, 272, 273, 275, 293]",
+      "failed_u": 181,
+      "failed_v": 189,
+      "keeps_100%": false,
+      "score": 56.33333333333333
+    },
+    {
+      "kind": "line",
+      "idx": 239,
+      "nodes": 300,
+      "edges": 402,
+      "components": 4,
+      "coverage_fixed_%": 98.66666666666667,
+      "pmus_fixed": 96,
+      "coverage_reopt_%": 100.0,
+      "pmus_reopt": 100,
+      "delta_pmus": 4,
+      "greedy_time_s": 0.0229039000114426,
+      "pmus_reopt_list": "[0, 1, 2, 6, 10, 11, 14, 16, 18, 21, 22, 24, 28, 30, 32, 33, 35, 36, 37, 40, 42, 47, 48, 52, 53, 54, 56, 57, 58, 59, 61, 63, 64, 67, 70, 76, 78, 80, 82, 84, 87, 92, 93, 95, 96, 97, 102, 104, 105, 108, 110, 112, 115, 117, 118, 121, 131, 132, 133, 143, 144, 149, 151, 156, 159, 162, 168, 171, 172, 173, 176, 178, 182, 186, 192, 195, 198, 199, 203, 207, 209, 210, 212, 215, 216, 218, 221, 223, 227, 243, 263, 266, 267, 268, 269, 271, 272, 273, 275, 293]",
+      "failed_u": 175,
+      "failed_v": 189,
+      "keeps_100%": false,
+      "score": 56.33333333333333
+    }
+  ]
+}

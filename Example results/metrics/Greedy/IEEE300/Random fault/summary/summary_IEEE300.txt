@@ -1,0 +1,26 @@
+Run ID: RUN_20260104_233749_greedy_random_300 | System: IEEE300
+- Nodes=300, Edges=409, Components=1
+- Base PMUs: [0, 1, 2, 6, 10, 11, 14, 16, 18, 21, 22, 24, 28, 30, 32, 33, 35, 36, 37, 40, 42, 47, 48, 52, 53, 54, 57, 58, 59, 61, 63, 64, 67, 70, 76, 78, 80, 82, 84, 87, 92, 93, 95, 96, 97, 98, 102, 104, 108, 110, 111, 112, 115, 117, 118, 121, 131, 132, 133, 143, 144, 151, 156, 159, 162, 167, 168, 172, 182, 186, 188, 189, 192, 195, 198, 199, 203, 207, 209, 210, 212, 215, 216, 218, 221, 223, 227, 266, 267, 268, 269, 271, 272, 273, 275, 293] (#96) | Coverage=100.0%
+- N-1 robustness (base PMUs keep 100%): 8.9%
+- Avg ΔPMUs under outage: 0.595
+- Runtimes: build_graph=0.03186349998577498s | greedy_base=0.02344049999373965s | sweep_total=1326.3486s
+
+CSV files:
+  • RUN_20260104_233749_greedy_random_300\IEEE300\baseline\baseline_IEEE300.csv — baseline metrics
+  • RUN_20260104_233749_greedy_random_300\IEEE300\robustness\robustness_IEEE300.csv — robustness / outages
+  • RUN_20260104_233749_greedy_random_300\IEEE300\summary\summary_IEEE300.csv — summary stats
+  • RUN_20260104_233749_greedy_random_300\IEEE300\summary\critical_lines_IEEE300.csv — critical lines (aggregated)
+
+Figures:
+  • RUN_20260104_233749_greedy_random_300\IEEE300\base\20260104_233750_base_IEEE300.png — Base placement
+  • RUN_20260104_233749_greedy_random_300\IEEE300\topk\20260105_000119_topk_outages_IEEE300.png — Top-K outage bar chart
+  • RUN_20260104_233749_greedy_random_300\IEEE300\worst\20260105_000004_worst1_before_IEEE300_line_213.png — BEFORE: base PMUs, failed branch marked, unobserved gray
+  • RUN_20260104_233749_greedy_random_300\IEEE300\worst\20260105_000013_worst1_after_IEEE300_line_213.png — AFTER: re-optimized PMUs
+  • RUN_20260104_233749_greedy_random_300\IEEE300\worst\20260105_000021_worst2_before_IEEE300_line_211.png — BEFORE: base PMUs, failed branch marked, unobserved gray
+  • RUN_20260104_233749_greedy_random_300\IEEE300\worst\20260105_000030_worst2_after_IEEE300_line_211.png — AFTER: re-optimized PMUs
+  • RUN_20260104_233749_greedy_random_300\IEEE300\worst\20260105_000037_worst3_before_IEEE300_line_212.png — BEFORE: base PMUs, failed branch marked, unobserved gray
+  • RUN_20260104_233749_greedy_random_300\IEEE300\worst\20260105_000044_worst3_after_IEEE300_line_212.png — AFTER: re-optimized PMUs
+  • RUN_20260104_233749_greedy_random_300\IEEE300\worst\20260105_000051_worst4_before_IEEE300_line_247.png — BEFORE: base PMUs, failed branch marked, unobserved gray
+  • RUN_20260104_233749_greedy_random_300\IEEE300\worst\20260105_000058_worst4_after_IEEE300_line_247.png — AFTER: re-optimized PMUs
+  • RUN_20260104_233749_greedy_random_300\IEEE300\worst\20260105_000105_worst5_before_IEEE300_line_239.png — BEFORE: base PMUs, failed branch marked, unobserved gray
+  • RUN_20260104_233749_greedy_random_300\IEEE300\worst\20260105_000113_worst5_after_IEEE300_line_239.png — AFTER: re-optimized PMUs

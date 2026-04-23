@@ -1,0 +1,2 @@
+run_id,system,nodes,edges,base_num_pmus,base_coverage_%,N-1_robustness_%,avg_delta_pmus_outage,base_graph_time_s,base_greedy_time_s,sweep_total_time_s,topK_used,fault_mode
+RUN_20260104_233550_greedy_n1_300,IEEE300,300,409,96,100.0,64.0,0.124,0.03219820000231266,0.026483199995709583,28.9532,5,n-1

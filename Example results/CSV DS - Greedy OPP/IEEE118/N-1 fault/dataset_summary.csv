@@ -1,0 +1,2 @@
+run_id,system,num_buses,num_lines,num_trafos,num_intact_graphs,num_faulted_graphs,num_total_graphs,original_fault_scenarios_in_robustness_csv,max_fault_samples_used,extra_random_faults_for_gnn,max_faults_random_for_gnn
+RUN_20260105_010931_greedy_n1_118,IEEE118,118,173,13,1,186,187,186,-1,0,3

@@ -1,0 +1,2 @@
+run_id,system,nodes,edges,components,pmus,num_pmus,coverage_%,base_graph_time_s,base_greedy_time_s
+RUN_20260207_132647_greedy_n1_57,IEEE57,57,78,1,"[0, 3, 8, 10, 14, 19, 23, 24, 25, 28, 31, 34, 36, 37, 45, 49, 52, 55]",18,100.0,0.005478499981109053,0.0006954999989829957
