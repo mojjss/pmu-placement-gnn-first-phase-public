@@ -1,11 +1,13 @@
-````md
-# Learning-Augmented PMU Placement with Graph Neural Networks
 
-[![CI - C](https://img.shields.io/badge/CI-C-blue)](https://github.com/mojjss/pmu-placement-gnn-first-phase-public/actions)
-[![CI - MATLAB](https://img.shields.io/badge/CI-MATLAB-orange)](https://github.com/mojjss/pmu-placement-gnn-first-phase-public/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+# PMU Placement using Graph Neural Networks (GNNs) - First Phase
 
-This project explores **learning-augmented PMU placement** in power networks using **Graph Neural Networks (GNNs)**.
+[![Python](https://img.shields.io/badge/Python-3.11.4-blue?logo=python&logoColor=white)](#installation)
+[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter&logoColor=white)](#repository-entry-points)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+
+
+
+This project explores **PMU Placement using Graph Neural Networks (GNNs)**.
 
 Core workflow:
 - Generate “expert” labels with a **classical baseline** (currently greedy observability; **MILP/GA planned**).
@@ -156,28 +158,9 @@ results/
 ├─ figures_gnn/   # training curves + comparison visuals
 └─ gnn_models/    # .pth checkpoints
 ```
-
----
-
-## Roadmap
-
-* Add ILP/MILP and GA baselines.
-* Run more IEEE systems (14/30/57/118) and report compact coverage/runtime tables.
-* Improve architectures and cross-system generalization.
-
----
-
-## Citation
-
-Placeholder:
-
-> Sadafi, M. (2025). *Learning-Augmented PMU Placement with Graph Neural Networks.*
-
----
-
 ## License
 
-MIT — see [LICENSE](LICENSE).
+Apache 2.0 — see [LICENSE](LICENSE).
 
 ---
 
@@ -186,6 +169,6 @@ MIT — see [LICENSE](LICENSE).
 **Mojtaba Sadafi**
 [https://mojsadafi.ir](https://mojsadafi.ir)
 
-```
-```
+
+
 
