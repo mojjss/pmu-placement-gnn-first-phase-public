@@ -1,2 +1,0 @@
-run_id,system,num_buses,num_lines,num_trafos,num_intact_graphs,num_faulted_graphs,num_total_graphs,original_fault_scenarios_in_robustness_csv,max_fault_samples_used,extra_random_faults_for_gnn,max_faults_random_for_gnn
-RUN_20260207_132647_greedy_n1_57,IEEE57,57,63,17,1,80,81,80,-1,0,3
