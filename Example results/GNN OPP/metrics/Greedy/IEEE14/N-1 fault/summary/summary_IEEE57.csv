@@ -1,2 +1,0 @@
-run_id,system,nodes,edges,base_num_pmus,base_coverage_%,N-1_robustness_%,avg_delta_pmus_outage,base_graph_time_s,base_greedy_time_s,sweep_total_time_s,topK_used,fault_mode
-RUN_20260207_132647_greedy_n1_57,IEEE57,57,78,18,100.0,62.5,0.2,0.005478499981109053,0.0006954999989829957,2.2249,5,n-1

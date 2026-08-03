@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pmu-placement-gnn"
+version = "0.1.0"
+description = "Reproducible greedy and graph-neural-network workflows for PMU placement"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [
+  {name = "Mojtaba Sadafi"},
+]
+keywords = ["PMU", "power systems", "graph neural networks", "observability"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering",
+]
+dependencies = [
+  "matplotlib>=3.8,<4",
+  "networkx>=3.2,<4",
+  "numpy>=1.26,<3",
+  "pandas>=2.2,<4",
+  "pandapower>=2.14,<4",
+]
+
+[project.optional-dependencies]
+ml = [
+  "torch>=2.2,<3",
+  "torch-geometric>=2.5,<3",
+]
+notebooks = [
+  "ipykernel>=6.29,<7",
+  "jupyter>=1.1,<2",
+  "nbformat>=5.10,<6",
+  "notebook>=7.2,<8",
+]
+dev = [
+  "build>=1.2,<2",
+  "pytest>=8,<9",
+  "ruff>=0.6,<1",
+]
+
+[project.urls]
+Homepage = "https://github.com/mojjss/pmu-placement-gnn-first-phase-public"
+Repository = "https://github.com/mojjss/pmu-placement-gnn-first-phase-public"
+Issues = "https://github.com/mojjss/pmu-placement-gnn-first-phase-public/issues"
+
+[project.scripts]
+pmu-gnn = "pmu_placement_gnn.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["Example results", "notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

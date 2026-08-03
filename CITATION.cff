@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "PMU Placement with Graph Neural Networks"
+type: software
+authors:
+  - family-names: "Sadafi"
+    given-names: "Mojtaba"
+version: 0.1.0
+date-released: 2026-08-03
+url: "https://github.com/mojjss/pmu-placement-gnn-first-phase-public"
+repository-code: "https://github.com/mojjss/pmu-placement-gnn-first-phase-public"
+license: Apache-2.0
+keywords:
+  - phasor measurement unit
+  - power-system observability
+  - graph neural network
+  - reproducible research software
+

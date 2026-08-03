@@ -1,10 +1,18 @@
 
 __pycache__/
 *.pyc
+*.pyo
+*.egg-info/
 .venv/
 env/
 venv/
 .ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
 
 data/raw/*
 data/processed/*
@@ -18,3 +26,6 @@ results/figures/*
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Generated experiment artifacts
+results/

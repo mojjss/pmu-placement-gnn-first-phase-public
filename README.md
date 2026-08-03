@@ -1,175 +1,180 @@
+# PMU Placement with Graph Neural Networks
 
-# PMU Placement using Graph Neural Networks (GNNs) - First Phase
-
-[![Python](https://img.shields.io/badge/Python-3.11.4-blue?logo=python&logoColor=white)](#installation)
-[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter&logoColor=white)](#repository-entry-points)
+[![CI](https://github.com/mojjss/pmu-placement-gnn-first-phase-public/actions/workflows/ci.yml/badge.svg)](https://github.com/mojjss/pmu-placement-gnn-first-phase-public/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/Python-3.11%2B-blue?logo=python&logoColor=white)](pyproject.toml)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
+This repository is a reproducible research-software project for learning-augmented
+Phasor Measurement Unit (PMU) placement. It provides a deterministic greedy
+baseline, intact and faulted IEEE test-system datasets, and a PyTorch Geometric
+GCN that predicts node-level PMU placements.
 
+The historical notebooks remain available for traceability. The reusable and
+portable implementation in `src/pmu_placement_gnn/` is the canonical entry point
+for new runs.
 
+## What is implemented
 
-This project explores **PMU Placement using Graph Neural Networks (GNNs)**.
+- Deterministic greedy PMU placement under a one-hop topological observability model.
+- N-1 line, two-winding-transformer, and three-winding-transformer outages.
+- Seeded, replayable random multi-fault scenarios.
+- Portable compressed NPZ datasets with node labels, graph targets, and an index.
+- A two-layer PyTorch Geometric GCN with class balancing and coverage-aware losses.
+- Coverage-aware top-K decoding and node-feature normalization from training data only.
+- Tests and continuous integration for the portable core.
 
-Core workflow:
-- Generate “expert” labels with a **classical baseline** (currently greedy observability; **MILP/GA planned**).
-- Simulate **intact + faulted** topologies (line/transformer outages) with **pandapower**.
-- Export a **PyTorch Geometric (PyG)** dataset.
-- Train a **supervised GNN** to predict PMU locations and evaluate **top-K** observability.
+The greedy method is a heuristic and does not certify a minimum PMU count. The
+observability model is graph-based; it is not a replacement for an electrical
+state-estimation or zero-injection-bus observability study.
 
-**Goal:** keep **full or near-full observability** while reducing optimization/runtime cost and improving robustness under faults.
-
----
-
-## What’s implemented
-
-### 1) Greedy baseline + robustness
-- Greedy PMU placement (observability-based).
-- Outage evaluation:
-  - `fault_mode="n-1"`: single line/trafo outages (fixed coverage + re-opt via greedy).
-  - `fault_mode="random"`: optional random multi-fault scenarios.
-- Outputs: CSV metrics, figures, and a **manifest JSON** per run.
-
-### 2) GNN dataset export (NPZ + index.csv)
-- Builds a dataset from intact + faulted scenarios (labels from greedy / greedy re-opt).
-- Outputs: `samples/*.npz`, `index.csv`, and `dataset_summary.csv`.
-
-### 3) GNN training + top-K evaluation (PyG)
-- Node-classification **GCN** for PMU / no-PMU prediction.
-- **Top-K inference** with `K = #PMUs(greedy)` (fair comparison) and coverage evaluation.
-- Saves curves + checkpoints under `results/`.
-
----
-
-## Repository entry points
-
-- `Greedy-1.5.*` — baseline, outages, plots, manifest, dataset export  
-- `GNN-1.5.*` — dataset loading, training, evaluation, greedy vs GNN top-K
-
-> Notebook-style “cells” (`# %%`). If saved as `.txt`, rename to `.py` for easier execution.
-
----
-
-## Project layout (typical)
+## Repository layout
 
 ```text
-pmu-placement-gnn/
-├── Greedy-1.5.*
-├── GNN-1.5.*
-├── results/
-│   ├── figures/
-│   ├── metrics/          # baseline/robustness/summary + manifest
-│   ├── gnn_dataset/      # NPZ + index.csv
-│   ├── figures_gnn/
-│   └── gnn_models/
-├── requirements.txt
-└── README.md
-````
+.
+├── src/pmu_placement_gnn/  # reusable Python package and CLI
+├── tests/                  # regression and data-contract tests
+├── notebooks/              # historical exploratory workflows
+├── Example results/        # selected outputs from notebook runs
+├── docs/                   # methods and reproducibility guidance
+├── CITATION.cff            # machine-readable software citation
+├── pyproject.toml          # package metadata and dependencies
+└── requirements.txt        # full local research environment
+```
 
----
+See [the notebook-to-module map](docs/NOTEBOOK_MAP.md) for the direct relationship
+between the older cells and the package.
 
 ## Installation
 
+Python 3.11 or 3.12 is recommended.
+
 ```bash
 python -m venv .venv
-# Windows PowerShell:
+```
+
+Windows PowerShell:
+
+```powershell
 .venv\Scripts\Activate.ps1
-# Linux/macOS:
-# source .venv/bin/activate
-
 python -m pip install --upgrade pip
-
-# PyTorch (CPU example)
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
-pip install torch-geometric
-
-pip install -r requirements.txt
+python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+python -m pip install -e ".[ml,notebooks]"
 ```
 
----
+Linux or macOS:
 
-## Quickstart (end-to-end)
+```bash
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+python -m pip install -e ".[ml,notebooks]"
+```
 
-### A) Run greedy baseline + robustness (in `Greedy-1.5.*`)
+`torchvision` and `torchaudio` are not required. GPU users should choose the
+PyTorch command appropriate for their CUDA environment before installing the
+project extras.
+
+## Quickstart
+
+Generate deterministic IEEE-14 N-1 labels and a GNN dataset:
+
+```bash
+pmu-gnn greedy --system IEEE14 --fault-mode n-1 --seed 42 --tag ieee14-n1
+```
+
+The command prints the exact run directory. A typical output is:
+
+```text
+results/RUN_<UTC>_ieee14-n1/IEEE14/
+├── manifest.json
+└── dataset/
+    ├── index.csv
+    ├── metadata.json
+    └── samples/*.npz
+```
+
+Generate 50 unique random multi-fault scenarios containing at most three total
+failed physical branches:
+
+```bash
+pmu-gnn greedy --system IEEE14 --fault-mode random \
+  --random-scenarios 50 --max-random-failures 3 --seed 42
+```
+
+Train the GCN after installing the `ml` extra:
+
+```bash
+pmu-gnn train \
+  --dataset results/RUN_<UTC>_ieee14-n1/IEEE14/dataset \
+  --output results/training/IEEE14/run-01 \
+  --epochs 150 --seed 42
+```
+
+Every checkpoint records its feature order, training-only normalization
+statistics, hyperparameters, and validation metrics.
+
+## Python API
 
 ```python
-import pandapower.networks as pn
-net = pn.case14()
+from pmu_placement_gnn.dataset import build_dataset
+from pmu_placement_gnn.power_network import generate_failure_scenarios
+from pmu_placement_gnn.experiment import load_test_system
 
-run_id, manifest = run_suite(
+net = load_test_system("IEEE14")
+scenarios = generate_failure_scenarios(net, mode="n-1", seed=42)
+result = build_dataset(
     net,
+    scenarios,
+    "results/manual/IEEE14/dataset",
     system_name="IEEE14",
-    fault_mode="n-1",   # or "random"
-    top_k=5,
-    preview=True,
-    run_tag="greedy_n1_14",
+    seed=42,
 )
-print("Run ID:", run_id)
+print(result.index_path)
 ```
 
-### B) Export a PyG dataset (still in `Greedy-1.5.*`)
+## Dataset contract
 
-```python
-out_root, index_path, summary_path = build_gnn_dataset_from_manifest(
-    net,
-    manifest,
-    max_fault_samples=None,
-    extra_random_faults_for_gnn=0,
-    max_faults_random=3,
-)
-print(out_root, index_path, summary_path)
+Each sample contains:
+
+- `x`: node features in the order recorded by `metadata.json`.
+- `edge_index`: shape `2 x E`; each physical undirected branch appears in both directions.
+- `edge_attr`: branch features aligned with `edge_index`.
+- `y`: node labels where `1` denotes a greedy reference PMU.
+- `bus_ids`: mapping from array position to the original pandapower bus ID.
+- `graph_y`: fixed coverage, re-optimized coverage, PMU-count change, and components.
+- `scenario_type` and `failures_json`: provenance needed to replay the topology.
+
+Parallel branches are preserved. For a random scenario, `failures_json` contains
+the complete failure set rather than only its final outage.
+
+## Verification
+
+Install developer tools and run:
+
+```bash
+python -m pip install -e ".[dev]"
+pytest
+ruff check .
+python -m build
 ```
 
-```text
-results/gnn_dataset/<run_id>/<system>/
-├── samples/*.npz
-├── index.csv
-└── dataset_summary.csv
-```
+For end-to-end checks and the status of historical artifacts, see
+[REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md).
 
-### C) Train + evaluate the GNN (in `GNN-1.5.*`)
+## Citation and archival releases
 
-* Set dataset paths (e.g., `N1_DATASET_DIRS` / `RANDOM_DATASET_DIRS`)
-* Run training to save:
+Use the repository's **Cite this repository** control, generated from
+[`CITATION.cff`](CITATION.cff). For an archival DOI, connect the repository to
+Zenodo and create a GitHub release; add the assigned DOI to `CITATION.cff` in the
+next release.
 
-  * curves (`results/figures_gnn/`)
-  * checkpoints (`results/gnn_models/`)
-  * greedy vs GNN top-K coverage comparisons
+## Contributing and support
 
----
+Contributions are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening
+a pull request. Report security-sensitive problems using [SECURITY.md](SECURITY.md)
+rather than a public issue.
 
-## Dataset format (concise)
+Apache License 2.0. See [LICENSE](LICENSE).
 
-Each `samples/*.npz` includes:
-
-* `x` (`N×5`), `edge_index` (`2×E`), `edge_attr` (`E×6`)
-* `y` (`N`, 1=PMU / 0=no-PMU)
-* `bus_ids`, `graph_y`, `scenario_type` (`"intact"` / `"faulted"`)
-
-`index.csv` stores per-sample metadata and file pointers.
-
----
-
-## Outputs
-
-```text
-results/
-├─ metrics/       # baseline / robustness / summary / manifest
-├─ figures/       # baseline + outage plots
-├─ gnn_dataset/   # NPZ + index
-├─ figures_gnn/   # training curves + comparison visuals
-└─ gnn_models/    # .pth checkpoints
-```
-## License
-
-Apache 2.0 — see [LICENSE](LICENSE).
-
----
-
-## Author
-
-**Mojtaba Sadafi**
-[https://mojsadafi.ir](https://mojsadafi.ir)
-
-
-
+Author: [Mojtaba Sadafi](https://mojsadafi.ir)
 
