@@ -66,3 +66,12 @@ seed used for each released result.
 The environment used to validate version 0.1.0 is preserved in
 [`environment/`](../environment/README.md), including the Python version, exact
 dependency snapshot, validation commands, and reproduction seed.
+
+## Archival release
+
+Version `v0.1.0` corresponds to Git commit
+`c9b0842e799d7427ed01fd9150e83a13f51f5550` and is archived on Zenodo under
+[version DOI 10.5281/zenodo.21765781](https://doi.org/10.5281/zenodo.21765781).
+Use this version-specific DOI when exact reproducibility matters. The
+[concept DOI 10.5281/zenodo.21765780](https://doi.org/10.5281/zenodo.21765780)
+represents the software as a whole and resolves to its latest archived version.

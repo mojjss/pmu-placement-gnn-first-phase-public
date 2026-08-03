@@ -9,6 +9,7 @@ authors:
     affiliation: "Esfarayen University of Technology"
 version: 0.1.0
 date-released: 2026-08-03
+doi: "10.5281/zenodo.21765781"
 url: "https://github.com/mojjss/pmu-placement-gnn-first-phase-public"
 repository-code: "https://github.com/mojjss/pmu-placement-gnn-first-phase-public"
 license: Apache-2.0

@@ -1,6 +1,7 @@
 # PMU Placement with Graph Neural Networks
 
 [![CI](https://github.com/mojjss/pmu-placement-gnn-first-phase-public/actions/workflows/ci.yml/badge.svg)](https://github.com/mojjss/pmu-placement-gnn-first-phase-public/actions/workflows/ci.yml)
+[![DOI](https://zenodo.org/badge/1116567980.svg)](https://doi.org/10.5281/zenodo.21765780)
 [![Python](https://img.shields.io/badge/Python-3.11%2B-blue?logo=python&logoColor=white)](pyproject.toml)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
@@ -170,7 +171,12 @@ recorded in [`environment/`](environment/README.md).
 ## Citation and archival releases
 
 Use the repository's **Cite this repository** control, generated from
-[`CITATION.cff`](CITATION.cff). 
+[`CITATION.cff`](CITATION.cff).
+
+For reproducible citation of the first archival release, cite version `v0.1.0`
+using [DOI 10.5281/zenodo.21765781](https://doi.org/10.5281/zenodo.21765781).
+The [concept DOI 10.5281/zenodo.21765780](https://doi.org/10.5281/zenodo.21765780)
+represents all versions and always resolves to the latest Zenodo release.
 
 ## Contributing and support
 
