@@ -164,9 +164,7 @@ For end-to-end checks and the status of historical artifacts, see
 ## Citation and archival releases
 
 Use the repository's **Cite this repository** control, generated from
-[`CITATION.cff`](CITATION.cff). For an archival DOI, connect the repository to
-Zenodo and create a GitHub release; add the assigned DOI to `CITATION.cff` in the
-next release.
+[`CITATION.cff`](CITATION.cff). 
 
 ## Contributing and support
 
