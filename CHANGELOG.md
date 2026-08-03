@@ -11,4 +11,5 @@ All notable project changes are documented here.
 - Added a direct NPZ loader, deterministic data split, training-only normalization,
   and self-describing checkpoints.
 - Added tests, continuous integration, citation metadata, and reproducibility docs.
-
+- Added the notebook-to-module map and an exact release-validation environment snapshot.
+- Updated GitHub Actions to the Node 24-based checkout and Python setup actions.

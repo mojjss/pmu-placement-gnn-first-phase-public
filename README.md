@@ -13,6 +13,9 @@ The historical notebooks remain available for traceability. The reusable and
 portable implementation in `src/pmu_placement_gnn/` is the canonical entry point
 for new runs.
 
+This software supports an ongoing research manuscript. Publication citation
+details will be added when they become publicly available.
+
 ## What is implemented
 
 - Deterministic greedy PMU placement under a one-hop topological observability model.
@@ -36,6 +39,7 @@ state-estimation or zero-injection-bus observability study.
 ├── notebooks/              # historical exploratory workflows
 ├── Example results/        # selected outputs from notebook runs
 ├── docs/                   # methods and reproducibility guidance
+├── environment/            # frozen validation environment
 ├── CITATION.cff            # machine-readable software citation
 ├── pyproject.toml          # package metadata and dependencies
 └── requirements.txt        # full local research environment
@@ -160,6 +164,8 @@ python -m build
 
 For end-to-end checks and the status of historical artifacts, see
 [REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md).
+The exact Windows/Python 3.12 environment used for release validation is
+recorded in [`environment/`](environment/README.md).
 
 ## Citation and archival releases
 
@@ -175,4 +181,3 @@ rather than a public issue.
 Apache License 2.0. See [LICENSE](LICENSE).
 
 Author: [Mojtaba Sadafi](https://mojsadafi.ir)
-

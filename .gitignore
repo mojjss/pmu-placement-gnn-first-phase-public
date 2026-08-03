@@ -22,7 +22,7 @@ results/figures/*
 
 !data/raw/README.md
 !data/processed/README.md
-docs/NOTEBOOK_MAP.md
+
 
 .vscode/
 .DS_Store

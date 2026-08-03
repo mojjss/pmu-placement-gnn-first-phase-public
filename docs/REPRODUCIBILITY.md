@@ -63,3 +63,6 @@ Before an archival release, run the tests in a clean environment, record
 `python --version`, save `python -m pip freeze`, and attach the exact command and
 seed used for each released result.
 
+The environment used to validate version 0.1.0 is preserved in
+[`environment/`](../environment/README.md), including the Python version, exact
+dependency snapshot, validation commands, and reproduction seed.

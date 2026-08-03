@@ -5,6 +5,8 @@ type: software
 authors:
   - family-names: "Sadafi"
     given-names: "Mojtaba"
+    orcid: "https://orcid.org/0009-0005-8323-1967"
+    affiliation: "Esfarayen University of Technology"
 version: 0.1.0
 date-released: 2026-08-03
 url: "https://github.com/mojjss/pmu-placement-gnn-first-phase-public"
@@ -15,4 +17,3 @@ keywords:
   - power-system observability
   - graph neural network
   - reproducible research software
-
