@@ -4,6 +4,8 @@
 [![DOI](https://zenodo.org/badge/1116567980.svg)](https://doi.org/10.5281/zenodo.21765780)
 [![Python](https://img.shields.io/badge/Python-3.11%2B-blue?logo=python&logoColor=white)](pyproject.toml)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21765781.svg)](https://doi.org/10.5281/zenodo.21765781)
+
 
 This repository is a reproducible research-software project for learning-augmented
 Phasor Measurement Unit (PMU) placement. It provides a deterministic greedy
